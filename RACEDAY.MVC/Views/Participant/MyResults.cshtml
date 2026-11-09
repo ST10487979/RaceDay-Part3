@@ -1,0 +1,17 @@
+﻿@model List<RaceDay.MVC.Models.ResultDto>
+<h2>My Race Results</h2>
+<table class="table">
+    <thead><tr><th>Event</th><th>Date</th><th>Category</th><th>Time</th><th>Position</th></tr></thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.EventTitle</td>
+                <td>@r.EventDate.ToShortDateString()</td>
+                <td>@r.CategoryName</td>
+                <td>@(r.DNF ? "DNF" : r.FinishTime)</td>
+                <td>@(r.DNF ? "-" : r.Position.ToString())</td>
+            </tr>
+        }
+    </tbody>
+</table>

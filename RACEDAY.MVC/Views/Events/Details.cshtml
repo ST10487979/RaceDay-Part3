@@ -1,0 +1,21 @@
+﻿@model RaceDay.MVC.Models.EventDto
+<h2>@Model.Title</h2>
+<p>@Model.Description</p>
+<p><strong>Date:</strong> @Model.EventDate.ToString("f") | <strong>Location:</strong> @Model.Location</p>
+
+<h4 class="mt-4">Categories</h4>
+<ul class="list-group">
+    @foreach (var cat in ViewBag.Categories as List<RaceDay.MVC.Models.CategoryDto>)
+    {
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>@cat.Name</strong> - @cat.Distance km (R@cat.EntryFee)
+            </div>
+            <form asp-action="Enrol" method="post">
+                <input type="hidden" name="eventId" value="@Model.EventID" />
+                <input type="hidden" name="categoryId" value="@cat.CategoryID" />
+                <button type="submit" class="btn btn-success btn-sm">Enrol Now</button>
+            </form>
+        </li>
+    }
+</ul>

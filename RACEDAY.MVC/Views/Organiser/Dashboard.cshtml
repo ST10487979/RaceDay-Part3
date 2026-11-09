@@ -1,0 +1,19 @@
+﻿@model List<RaceDay.MVC.Models.EventDto>
+<div class="d-flex justify-content-between mt-4">
+    <h2>My Events</h2>
+    <a asp-action="CreateEvent" class="btn btn-primary">Create New Event</a>
+</div>
+<table class="table mt-3">
+    <thead><tr><th>Title</th><th>Date</th><th>Location</th><th>Actions</th></tr></thead>
+    <tbody>
+        @foreach (var evt in Model)
+        {
+            <tr>
+                <td>@evt.Title</td>
+                <td>@evt.EventDate.ToShortDateString()</td>
+                <td>@evt.Location</td>
+                <td><a asp-action="ViewEnrolments" asp-route-eventId="@evt.EventID" class="btn btn-sm btn-info">View Enrolments</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,19 @@
+﻿@model RaceDay.MVC.Models.CreateEventDto
+<div class="card shadow p-4 mt-4">
+    <h3>Create Event</h3>
+    <form asp-action="CreateEvent" method="post" enctype="multipart/form-data">
+        <div class="mb-3"><label asp-for="Title"></label><input asp-for="Title" class="form-control" required /></div>
+        <div class="mb-3"><label asp-for="Description"></label><textarea asp-for="Description" class="form-control"></textarea></div>
+        <div class="row">
+            <div class="col-md-6 mb-3"><label asp-for="EventDate"></label><input asp-for="EventDate" type="datetime-local" class="form-control" required /></div>
+            <div class="col-md-6 mb-3"><label asp-for="Location"></label><input asp-for="Location" class="form-control" required /></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3"><label asp-for="Distance"></label><input asp-for="Distance" class="form-control" required /></div>
+            <div class="col-md-4 mb-3"><label asp-for="EventType"></label><select asp-for="EventType" class="form-select"><option>Run</option><option>Walk</option><option>Cycle</option></select></div>
+            <div class="col-md-4 mb-3"><label asp-for="MaxEntries"></label><input asp-for="MaxEntries" class="form-control" value="1000" required /></div>
+        </div>
+        <div class="mb-3"><label>Banner Image</label><input type="file" name="banner" class="form-control" accept="image/*" /></div>
+        <button type="submit" class="btn btn-primary w-100">Save Event</button>
+    </form>
+</div>

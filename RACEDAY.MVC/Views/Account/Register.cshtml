@@ -1,0 +1,34 @@
+﻿@model RaceDay.MVC.Models.RegisterViewModel
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow p-4">
+            <h3 class="text-center mb-4">Register</h3>
+            <form asp-action="Register" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="mb-3"><label asp-for="FullName"></label><input asp-for="FullName" class="form-control" /></div>
+                <div class="mb-3"><label asp-for="Email"></label><input asp-for="Email" class="form-control" /></div>
+                <div class="mb-3"><label asp-for="Password"></label><input asp-for="Password" class="form-control" /></div>
+                <div class="mb-3">
+                    <label asp-for="Role"></label>
+                    <select asp-for="Role" class="form-select">
+                        <option value="Participant">Participant</option>
+                        <option value="Organiser">Organiser</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DateOfBirth">Date of Birth</label>
+                    <input asp-for="DateOfBirth" type="date" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Province">Province</label>
+                    <input asp-for="Province" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="EmergencyContact">Emergency Contact</label>
+                    <input asp-for="EmergencyContact" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
