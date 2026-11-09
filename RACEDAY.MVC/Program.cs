@@ -2,13 +2,12 @@ using RaceDay.MVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Add MVC
+
 builder.Services.AddControllersWithViews();
 
-// 2. Add HttpContextAccessor (Required for ApiService to read Session)
 builder.Services.AddHttpContextAccessor();
 
-// 3. Add Session
+
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -16,15 +15,15 @@ builder.Services.AddSession(options => {
     options.Cookie.IsEssential = true;
 });
 
-// 4. Connect to the API URL from appsettings.json
-// This registers ApiService so you can inject it into your Controllers!
+
+
 builder.Services.AddHttpClient<IApiService, ApiService>(client => {
     client.BaseAddress = new Uri(builder.Configuration["ApiSettings:BaseUrl"] ?? "https://localhost:7001");
 });
 
 var app = builder.Build();
 
-// 5. Middleware Pipeline (The order here is CRITICAL)
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
